@@ -252,7 +252,7 @@ $(document).ready(function() {
 			}
 		});
 	} else if (opTypeClass==3) {
-		if (typeof approvalUser!='undefined' && approvalUser.valid_flag==1 && $.inArray(4, allowedActions)>-1) {
+		if (typeof approvalUser!='undefined' && approvalUser.valid_flag==1 && approvalUser.result_status==0 && $.inArray(4, allowedActions)>-1) {
 			//隐藏上层查看日报属性页面的“评阅回复”按钮
 			$sidepageContainer.parents('.sidepage-main-content').find('button.switch-to-approval').addClass('ebtw-hide');
 			
@@ -293,7 +293,7 @@ $(document).ready(function() {
 						layer.msg('发表评阅回复成功');
 						refreshTabBadges(subTypeOfTabBadges, 'sidepage-tab', [TabBadgesDatas[tabType], TabBadgesDatas[20]]); //刷新Tab角标数值
 						$sidepageContainer.parent().find('#sidepage-tab'+tabType).trigger('click'); //模拟点击刷新Tab内容页面
-						//$sidepageContainer.parents('.sidepage-main-content').find('button.switch-to-approval').remove(); //删除“评阅回复”按钮
+						$sidepageContainer.parents('.sidepage-main-content').find('button.switch-to-approval').remove(); //删除“评阅回复”按钮
 						
 						layer.close(loadIndex);
 					}, function(reason) {

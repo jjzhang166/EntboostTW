@@ -55,6 +55,11 @@ $(document).ready(function() {
 
 	//定义函数：执行加载数据
 	var executeLoadDataFunc = function(activeNo, url, param, successHandle, errorHandle) {
+		//更新tab标签内容数量
+		refreshTabBadges('workbench_2', 'wkfiles-tab', [
+			TabBadgesDatasOfWKFiles[activeNo],
+		]);
+		
 		//加载文件列表
 		$.ebtw.listfile(param.from_type, param.from_id, param.flag, param.get_summary, 0, 100, function(result) {
 			if (result.code=='0') {

@@ -28,7 +28,7 @@ $OperaterecordBCMsg_Content_Rules = array(
 			
 	23=>array_merge($Default_OperaterecordBCMsg_Content_Params, array('operate'=>'评审拒绝',  'content'=>"计划评审被拒绝，评审人：{{p1}}\n{{p2}}")), //计划评审被拒绝，评审人：{{张三}}\n{{计划名称}}
 	
-	24=>array_merge($Default_OperaterecordBCMsg_Content_Params, array('operate'=>'评审撤销',  'content'=>"计划评审被撤销，提交人：{{p1}}\n{{p2}}")), //计划评审被撤销，提交人：{{张三}}\n{{计划名称}}
+	24=>array_merge($Default_OperaterecordBCMsg_Content_Params, array('operate'=>'评审撤销',  'content'=>"计划评审被撤销，提交人：{{p1}}\n{{p2}}", 'no_sub_id'=>true)), //计划评审被撤销，提交人：{{张三}}\n{{计划名称}}
 	
 	30=>array_merge($Default_OperaterecordBCMsg_Content_Params, array('operate'=>'负责人已阅',  'content'=>"任务负责人已阅，负责人：{{p1}}\n{{p2}}")), //任务负责人已阅，负责人：{{张三}}\n{{任务名称}}
 	
@@ -46,13 +46,16 @@ $OperaterecordBCMsg_Content_Rules = array(
 );
 
 //格式化操作日志提醒消息内容
-function formatOperaterecordBCMsgContent($opId, $opType, $userId, $userName, $fromType, $fromId, $fromName=NULL, $opData=NULL, $opName=NULL, $remark=NULL, $opTime=NULL, $extend=NULL) {
+function formatOperaterecordBCMsgContent(&$noSubId, $opId, $opType, $userId, $userName, $fromType, $fromId, $fromName=NULL, $opData=NULL, $opName=NULL, $remark=NULL, $opTime=NULL, $extend=NULL) {
 	global $OperaterecordBCMsg_Content_Rules;
 	$rule = $OperaterecordBCMsg_Content_Rules[$opType];
 	if (empty($rule)) {
 		log_err("no operaterecord bcmsg rule found for opType=$opType");
 		return;
 	}
+	
+	if (array_key_exists('no_sub_id', $rule))
+		$noSubId = $rule['no_sub_id'];
 	
 	//3 新评论/回复(附件)，评论人：杨宏展\n[计划名称] 			没附件不显示“附件”
 	$content = $rule['content'];
@@ -151,11 +154,12 @@ function sendBCMsg_after_operaterecord($target, $opId, $opType, $userId, $userNa
 	$subId = $SUB_IDS[$fromType];
 	
 	//按格式封装内容
+	
+	$msgContent = formatOperaterecordBCMsgContent($noSubId, $opId, $opType, $userId, $userName, $fromType, $fromId, $fromName, $opData, $opName, $remark, $opTime, $extend);
+	if (isset($noSubId) && $noSubId===true)
+		$subId = 0;
 	//“[计划/任务编号] [计划/任务SUBID,如1002300111] [打开参数,用于用户点击带上参数,例如plan_id=xxxxxxx]”，此处的中括号忽略
 	$content = "$fromId"." $subId ". urlencode('ptr_id='.$fromId.(!empty($custom)?"&$custom":""));
-// 	log_info('--------------------------');
-// 	log_info($content);
-	$msgContent = formatOperaterecordBCMsgContent($opId, $opType, $userId, $userName, $fromType, $fromId, $fromName, $opData, $opName, $remark, $opTime, $extend);
 	
 	$instance = APService::get_instance();
 	if (is_array($target)) {

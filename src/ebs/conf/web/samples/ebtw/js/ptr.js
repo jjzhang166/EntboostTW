@@ -323,7 +323,7 @@ function registerAddPTRClass(classType, btnSelector , completeFn, deleteFn, code
 					if (id) {
 						layer.msg('新建分类成功');
 						//重新加载
-						loadPTRClassAndCreateClassMenu(classType, false, true, function() {
+						loadPTRClassAndCreateClassMenu(classType, false, true, function(codeTable) {
 							if (activeClassId!=undefined) {
 								$headElement.parent().find('a.ptr_class_item[data-ptr-class-id="'+activeClassId+'"]').addClass('active');
 								$('#ptr_class_input').val(activeClassId);
@@ -331,6 +331,9 @@ function registerAddPTRClass(classType, btnSelector , completeFn, deleteFn, code
 							
 							if(addedFn)
 								addedFn(id, text, classType);
+							
+							if (completeFn)
+								completeFn(codeTable);
 						}, deleteFn, codeTableFn);
 					}
 					layer.close(loadIndex);
@@ -404,7 +407,7 @@ function loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, extend, co
 							if (affected>0) {
 								layer.msg('删除分类成功');
 								//重新加载
-								loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, true, function() {
+								loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, true, function(codeTable) {
 									if (deleteFn)
 										deleteFn(classId);
 									
@@ -412,6 +415,9 @@ function loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, extend, co
 										$headElement.parent().find('a.ptr_class_item[data-ptr-class-id="'+activeClassId+'"]').addClass('active');
 										$('#ptr_class_input').val(activeClassId);
 									}
+									
+									if (completeFn)
+										completeFn(codeTable);
 								}, deleteFn, codeTableFn);
 							}
 							layer.close(loadIndex);
@@ -432,11 +438,14 @@ function loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, extend, co
 								if (affected>0) {
 									layer.msg('编辑分类成功');
 									//重新加载
-									loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, true, function() {
+									loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, true, function(codeTable) {
 										if (activeClassId!=undefined) {
 											$headElement.parent().find('a.ptr_class_item[data-ptr-class-id="'+activeClassId+'"]').addClass('active');
 											$('#ptr_class_input').val(activeClassId);
 										}
+										
+										if (completeFn)
+											completeFn(codeTable);
 									}, deleteFn, codeTableFn);
 								}
 								layer.close(loadIndex);
@@ -485,6 +494,12 @@ function loadPTRClassAndCreateClassMenu(classType, justLoadCodeTable, extend, co
  */
 function registerTalkToPerson(stopEvent){
 	$(document).off('click', '.talk-to-person').on('click', '.talk-to-person', function(e) {
+		if ($(e.target).hasClass('t-action-item')) {
+			if (stopEvent)
+				stopPropagation(e);
+			return;
+		}
+		
 		var talkToUid = $(this).attr('data-talk-to-uid');
 		if (talkToUid!=undefined) {
 			$('body').find('.ebim-call-link').remove();

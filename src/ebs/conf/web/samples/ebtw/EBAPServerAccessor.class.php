@@ -205,7 +205,7 @@ class EBAPServerAccessor
 	 */
 	private function initApp($handle) {
 		if ($this->lc==null)
-			$this->lc = new EBLC(EB_IM_LC_SERVER, $this->appid, $this->appkey);
+			$this->lc = new EBLC(EB_IM_LC_SERVER_USED_BY_SERVER, $this->appid, $this->appkey);
 		
 		$arry = $this->lc->eb_lc_authAppid();
 		

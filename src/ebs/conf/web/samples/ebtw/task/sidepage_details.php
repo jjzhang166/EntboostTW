@@ -168,6 +168,16 @@ var taskCreateUid = '<?php echoField($entity, 'create_uid');?>';
 var status = <?php echoField($entity, 'status');?>;
 var percentage = <?php echoField($entity, 'percentage', '0');?>; //当前进度
 var allowedActions = <?php echoField($entity, 'allowedActions', '[]');?>; //操作权限
+<?php 
+//"开放所有人"的任务允许任何人关注
+if (!empty($entity) && $entity->open_flag==1) {
+?>
+	if ($.inArray(13, allowedActions)<0)
+		allowedActions.push(13);
+<?php
+}
+?>
+	
 var defaultActiveNo = <?php echo get_request_param('reserved_active_no', '11')?>; //默认激活标签编号
 
 var TabBadgesDatas = {

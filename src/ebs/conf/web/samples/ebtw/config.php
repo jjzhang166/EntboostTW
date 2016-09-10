@@ -8,9 +8,12 @@ define("WEB_ROOT", dirname(__FILE__) ); //设置当前文件(common.php)的路�
 // define("DOC_ROOT", $_SERVER['DOCUMENT_ROOT']);
 
 //访问恩布IM RestApi服务参数
-define('EB_IM_LC_SERVER', '192.168.1.98:80'); //lc服务地址
-//define('EB_IM_LC_SERVER', 'test-lc.entboost.com:808'); //lc服务地址
-//define('EB_IM_LC_SERVER', '192.168.1.99:82'); //lc服务地址
+define('EB_IM_LC_SERVER_USED_BY_SERVER', '127.0.0.1:80'); //lc服务地址-服务端使用
+define('EB_IM_LC_SERVER_USED_BY_CLIENT', '192.168.1.98:80'); //lc服务地址-客户端使用
+
+//define('EB_IM_LC_SERVER_USED_BY_SERVER', 'test-lc.entboost.com:808'); //lc服务地址-服务端使用
+//define('EB_IM_LC_SERVER_USED_BY_CLIENT', 'test-lc.entboost.com:808'); //lc服务地址-客户端使用
+
 define('EB_HTTP_PREFIX', 'http'); //访问恩布 RestApi使用的http协议: http 或 https
 define('REST_VERSION_STR', '/rest.v03.'); //恩布 Rest Api版本访问字符串(用于PHP)
 define('EB_REST_VERSION', '03'); //恩布Rest Api版本号

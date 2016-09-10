@@ -11,7 +11,7 @@
 	echo 'var logon_type = "'.$_SESSION[EB_LOGON_TYPE_NAME].'";'."\n";
 	echo 'var acm_key = "'.$_SESSION[EB_UM_ACM_KEY_NAME].'";'."\n";
 	echo 'var ebHttpPrefix = "'.EB_HTTP_PREFIX.'";'."\n";
-	echo 'var lcServerAddr = "'.EB_IM_LC_SERVER.'";'."\n";
+	echo 'var lcServerAddr = "'.EB_IM_LC_SERVER_USED_BY_CLIENT.'";'."\n";
 	echo 'var umServerAddr = "'.$_SESSION[EB_UM_ADDR_NAME].'";'."\n";
 	echo 'var umServerAddrSSL = "'.$_SESSION[EB_UM_ADDR_SSL_NAME].'";'."\n";
 	echo 'var umEbsid = "'.$_SESSION[EB_UM_SID_NAME].'";'."\n";
@@ -168,15 +168,15 @@ $(document).ready(function() {
 </script>
 
 <!-- ebtw -->
-<link rel="stylesheet" type="text/css" id="ebtw_server_url" href="<?php if (isset($relative_path)) echo $relative_path; ?>css/ebtw.css?v=35" /><!-- 本行的版本号很特殊，一定要写数字 -->
-<link rel="stylesheet" type="text/css" href="<?php if (isset($relative_path)) echo $relative_path; ?>css/ebtw2.css?v=37" />
-<link rel="stylesheet" type="text/css" href="<?php if (isset($relative_path)) echo $relative_path; ?>css/ebtw3.css?v=34" />
+<link rel="stylesheet" type="text/css" id="ebtw_server_url" href="<?php if (isset($relative_path)) echo $relative_path; ?>css/ebtw.css?v=36" /><!-- 本行的版本号很特殊，一定要写数字 -->
+<link rel="stylesheet" type="text/css" href="<?php if (isset($relative_path)) echo $relative_path; ?>css/ebtw2.css?v=38" />
+<link rel="stylesheet" type="text/css" href="<?php if (isset($relative_path)) echo $relative_path; ?>css/ebtw3.css?v=35" />
 
 <script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ptr_dictionary.js?v=22"></script>
 <script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/eb_restapi_fr.js?v=21"></script>
-<script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ebtw.js?v=38"></script>
+<script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ebtw.js?v=39"></script>
 <script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/date_algorithm.js?v=28"></script>
-<script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ptr.js?v=43"></script>
-<script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ptr2.js?v=39"></script>
+<script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ptr.js?v=45"></script>
+<script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/ptr2.js?v=40"></script>
 <script type="text/javascript" src="<?php if (isset($relative_path)) echo $relative_path; ?>js/sidepage.js?v=22"></script>
 

@@ -228,7 +228,7 @@
 
 <!-- 已选择人员  -->
 <script id="selected-user-script" type="text/html">
-	<div class="selected-person {{#if(d.talkToPerson){}}talk-to-person{{#}}}" {{#if(d.user_id){}}data-talk-to-uid="{{d.user_id}}"{{#}}} data-user-id="{{d.user_id}}" data-user-name="{{d.user_name}}"><span {{#if(d.user_id && d.user_account){}}title="{{d.user_account}}({{d.user_id}})"{{#}}}>{{d.user_name}}</span> <span class="glyphicon glyphicon-remove"></span></div>
+	<div class="selected-person {{#if(d.talkToPerson){}}talk-to-person{{#}}}" {{#if(d.user_id){}}data-talk-to-uid="{{d.user_id}}"{{#}}} data-user-id="{{d.user_id}}" data-user-name="{{d.user_name}}"><span {{#if(d.user_id && d.user_account){}}title="{{d.user_account}}({{d.user_id}})"{{#}}}>{{d.user_name}}</span> <span class="t-action-item glyphicon glyphicon-remove"></span></div>
 </script>
 
 <!-- 选择人员界面  -->
@@ -301,7 +301,7 @@
 <a href="#" title="点击下载">{{d.name}}</a>
 &nbsp;<div class="resource-size">{{#if(d.resourceSize){}}{{popularByteSize(d.resourceSize)}}{{#}}}</div>
 {{#if(d.openResource){}}
-&nbsp;<div class="open-resource" title="浏览文件" {{#if (d.online_view_url){}}data-open-url="{{d.online_view_url}}"{{#}}} {{#if (d.view_ext_type){}}data-ext-type="{{d.view_ext_type}}{{#}}}"><span class="fa 
+&nbsp;<div class="open-resource" title="点击在线浏览" {{#if (d.online_view_url){}}data-open-url="{{d.online_view_url}}"{{#}}} {{#if (d.view_ext_type){}}data-ext-type="{{d.view_ext_type}}{{#}}}"><span class="fa 
 	{{#if (d.view_ext_type==1){}}fa-file-pdf-o{{#} else if (d.view_ext_type==2){}}fa-file-image-o{{#} else if (d.view_ext_type==3){}}fa-file-o {{#}}}
 	"></span></div>
 {{#}}}

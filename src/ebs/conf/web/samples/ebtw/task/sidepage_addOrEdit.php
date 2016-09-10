@@ -265,7 +265,11 @@ $(document).ready(function() {
 	var selectedClassId = '<?php if (!empty($entity)){ echo $entity->class_id; }?>';
 	fillPtrClassSelect(ptrType, 'form', selectedClassId);
 	//注册事件-新建分类按钮
-	registerAddPTRClass(ptrType, '.ptr-add-class', null, null, function(codeTable, datas) {
+	registerAddPTRClass(ptrType, '.ptr-add-class', function(codeTable) { //分类菜单创建完毕
+		for (classId in codeTable) {
+			refreshPTRMenuBadges([100], ptrType, null, {reserved_query_of_calss:true, class_id:classId});
+		}
+	}, null, function(codeTable, datas) {
 		//生成分类代码对照表
 		dictClassNameOfTask = {0:dictClassNameOfTask[0]==undefined?'-':dictClassNameOfTask[0]};
 		$.extend(dictClassNameOfTask, codeTable);

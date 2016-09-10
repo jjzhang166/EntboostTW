@@ -1051,11 +1051,11 @@ input.ebtw-menu-input:not(:focus):hover {
 	/*cursor: default;*/
 	display: inline-block;
 }
-.selected-person>span.glyphicon {
+.selected-person span.glyphicon {
 	color: rgba(0,0,0,.3);
 	display: none;
 }
-.selected-person>span.glyphicon:hover {
+.selected-person span.glyphicon:hover {
 	color: rgba(0,0,0,.7);
 	cursor: pointer;
 }
