@@ -1,5 +1,5 @@
 
-# 恩布企业内部沟通协作平台 - 集成应用：EntboostTW
+# 恩布企业IM - 集成应用：企业协同办公平台EntboostTW
 + [ENTBOOST开源项目](http://doc.entboost.com/index.php/Im_source)
 + [ENTBOOST私有部署服务端下载](http://doc.entboost.com/index.php/Downloads)
 + [ENTBOOST网站](http://www.entboost.com)
