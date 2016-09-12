@@ -1,8 +1,8 @@
 
 # 恩布企业IM - 集成应用：企业协同办公平台EntboostTW
-+ [ENTBOOST开源项目](http://doc.entboost.com/index.php/Im_source)
-+ [ENTBOOST私有部署服务端下载](http://doc.entboost.com/index.php/Downloads)
++ 带服务端全套下载地址（下载即可使用）：[点击下载最新版本](http://doc.entboost.com/index.php/Downloads)
 + [ENTBOOST网站](http://www.entboost.com)
++ [ENTBOOST开源项目](http://doc.entboost.com/index.php/Im_source)
 
 ## 工作台-我的看板
 ![工作台-我的看板](/image/1.png "工作台-我的看板")
